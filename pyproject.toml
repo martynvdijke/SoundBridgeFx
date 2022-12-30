@@ -1,16 +1,23 @@
 [tool.poetry]
-name = "soundbridge"
+name = "soundbridgefx"
 version = "0.1.0"
 description = ""
 authors = ["Martyn van Dijke <martijnvdijke600@gmail.com>"]
 readme = "README.md"
+license = "MIT"
+repository = "https://github.com/martynvdijke/SoundBridgeFx"
 
 [tool.poetry.dependencies]
 python = "^3.10"
 soco = "^0.28.1"
 flask = "^2.2.2"
-
+ledfx = "^2.0.60"
+argparse = "^1.4.0"
+jsonpickle = "^3.0.1"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+soundbridgefx = 'soundbridgefx.__main__:main'
