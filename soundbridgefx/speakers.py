@@ -1,32 +1,56 @@
-import soco
 import json
+import logging
+from soundbridgefx import (
+    sonosspeakers
+)
 
+_LOGGER = logging.getLogger(__name__)
+
+class ComplexEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if hasattr(obj, 'reprJSON'):
+            return obj.reprJSON()
+        else:
+            return json.JSONEncoder.default(self, obj)
+
+        """
+        A single sonos speaker, lowest level of abstraction.
+
+        Returns:
+            _type_: _description_
+        """
 class Speakers:
-
     def __init__(self):
         self.speakers = []
-        print(self.speakers)
+        self.sonos_speakers = sonosspeakers.SonosSpeakers()
+        self.speakers.append(self.sonos_speakers)
         self.populate()
 
     def populate(self):
-        speakers = soco.discover()
-        for speaker in speakers:
-            self.speakers.append(Speaker(speaker))
-        print(self.speakers)
+        json.dumps(self.sonos_speakers.reprJSON(), cls=ComplexEncoder)
+
+    def reprJSON(self):
+        return dict(all_speakers=self.speakers)
 
     def get_all_speakers(self):
-        return self.speakers
+        return json.dumps(self.reprJSON(), cls=ComplexEncoder)
 
-    def toJSON(self):
-        return json.dumps(self, default=lambda o: o.__dict__,
-                          sort_keys=True, indent=4)
+    def play_stream(self, speakers):
+        response = self.sonos_speakers.play_stream(speakers)
+        return response
 
-class Speaker:
-    def __init__(self, speaker):
-        self.speaker = speaker
-        self.player_name = self.speaker.player_name
-        self.ip_addres = self.speaker.ip_address
-        print(self.player_name, self.ip_addres)
+    def play_party(self, speakers):
+        response = self.sonos_speakers.play_party(speakers)
+        return response
 
-    def play_stream(self):
-        self.speaker.play_uri(uri="http://192.168.1.21:8889/stream.mp3")
+    def pause(self, speakers):
+        response = self.sonos_speakers.pause(speakers)
+        return response
+
+    def stop(self, speakers):
+        response = self.sonos_speakers.stop(speakers)
+        return response
+
+    def set_volume(self, speakers):
+        response = self.sonos_speakers.set_volume(speakers)
+        return response

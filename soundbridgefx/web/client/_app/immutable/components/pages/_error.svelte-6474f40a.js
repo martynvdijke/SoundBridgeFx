@@ -1,0 +1,1 @@
+import{S as n,i as s,s as i,q as c,r as l,b as u,B as e,h as f}from"../../chunks/index-8527db9d.js";function p(a){let t;return{c(){t=c("Error page not found")},l(r){t=l(r,"Error page not found")},m(r,o){u(r,t,o)},p:e,i:e,o:e,d(r){r&&f(t)}}}class m extends n{constructor(t){super(),s(this,t,null,p,i,{})}}export{m as default};
