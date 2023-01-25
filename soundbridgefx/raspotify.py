@@ -18,6 +18,3 @@ def main():
             shell=True)
     except:
         _LOGGER.error("Could not start cvlc")
-
-
-main()

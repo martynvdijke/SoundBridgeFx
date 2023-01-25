@@ -120,13 +120,14 @@ def main():
     args = parse_args()
     setup_logging(args.loglevel)
 
-    ledfx_thread = threading.Thread(
-        target=ledfx.main(), args=(1,), daemon=True)
-    ledfx_thread.start()
+    # ledfx_thread = threading.Thread(
+    #     target=ledfx.main(), args=(1,), daemon=True)
+    # ledfx_thread.start()
 
-    cvlc_thread = threading.Thread(
-        target=cvlc.main(), args=(1,), daemon=True)
-    cvlc_thread.start()
+
+    # cvlc_thread = threading.Thread(
+    #     target=CVLC.main, args=(1,), daemon=True)
+    # cvlc_thread.start()
 
     # raspotify_thread = threading.Thread(
     #     target=raspotify.main(), args=(1,), daemon=True)
@@ -139,7 +140,6 @@ def main():
         while True:
             time.sleep(2)
     except KeyboardInterrupt:
-        ledfx_thread.join()
-        cvlc_thread.join()
+        # ledfx_thread.join()
         # raspotify_thread.join()
         backend_thread.join()
