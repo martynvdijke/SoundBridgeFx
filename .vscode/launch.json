@@ -10,7 +10,7 @@
             "request": "launch",
             "env": {"PYTHONPATH": "${workspaceFolder}/venv/bin/python${env:PYTHONPATH}"},
 
-            // "pythonPath": "${workspaceFolder}/venv/bin/python",
+            // "python": "${workspaceFolder}/venv/bin/python",
             "cwd": "${workspaceFolder}/soundbridgefx",
             "module": "soundbridgefx",
             "args": []
