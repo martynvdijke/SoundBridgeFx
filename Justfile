@@ -28,7 +28,11 @@
 @poetry: poetry_build
   poetry run semantic-release publish
 
-
 #poetry build
 @poetry_build:
   poetry build
+
+@svelte_build:
+  cd web && npm run build
+  cp -r web/.svelte-kit/output/client/ soundbridgefx/web
+  cp -r web/.svelte-kit/output/prerendered soundbridgefx/web

@@ -27,16 +27,17 @@
 		/>
 
 		<meta http-equiv="content-security-policy" content="">
-		<link href="./_app/immutable/assets/_layout-b09eff48.css" rel="stylesheet">
-		<link href="./_app/immutable/assets/_page-ad402662.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/start-7b9b8907.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index-8527db9d.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index-6d47b186.js">
-		<link rel="modulepreload" href="./_app/immutable/components/pages/_layout.svelte-210af6c2.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/Ripple-9d4e6a07.js">
-		<link rel="modulepreload" href="./_app/immutable/modules/pages/_layout.js-9cbb603b.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/_layout-da46b06b.js">
-		<link rel="modulepreload" href="./_app/immutable/components/pages/_page.svelte-3d289516.js"><title>SoundBridgeFX</title><!-- HEAD_svelte-dlu9t3_START --><meta name="description" content="SoundBridgeFx"><!-- HEAD_svelte-dlu9t3_END -->
+		<link href="./_app/immutable/assets/_layout.b09eff48.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/_page.ad402662.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.9f11f0ca.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.72b3cb36.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.a6ab0d54.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.d3c452e9.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.svelte.ff54b69b.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/Ripple.6b4d2b6a.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.js.984db11e.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_layout.da46b06b.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_page.svelte.53000b6a.js"><title>SoundBridgeFX</title><!-- HEAD_svelte-dlu9t3_START --><meta name="description" content="SoundBridgeFx"><!-- HEAD_svelte-dlu9t3_END -->
 	</head>
 	<body>
 		<div>
@@ -75,22 +76,30 @@
 </main>
 
 
-		<script type="module" data-sveltekit-hydrate="1lo2mnb">
-			import { start } from "./_app/immutable/start-7b9b8907.js";
+			
+			<script>
+				{
+					__sveltekit_rrvymo = {
+						env: {},
+						assets: new URL(".", location.href).pathname.replace(/^\/$/, ''),
+						element: document.currentScript.parentElement
+					};
 
-			start({
-				env: {},
-				paths: {"assets":"","base":""},
-				target: document.querySelector('[data-sveltekit-hydrate="1lo2mnb"]').parentNode,
-				version: "1674418996194",
-				hydrate: {
-					node_ids: [0, 2],
-					data: [null,null],
-					form: null,
-					error: null
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.9f11f0ca.js"),
+						import("./_app/immutable/entry/app.d3c452e9.js")
+					]).then(([kit, app]) => {
+						kit.start(app, __sveltekit_rrvymo.element, {
+							node_ids: [0, 2],
+							data,
+							form: null,
+							error: null
+						});
+					});
 				}
-			});
-		</script>
-	</div>
+			</script>
+		</div>
 	</body>
 </html>
