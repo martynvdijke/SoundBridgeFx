@@ -28,15 +28,15 @@
 
 		<meta http-equiv="content-security-policy" content="">
 		<link href="./_app/immutable/assets/_layout.b09eff48.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/entry/start.9f11f0ca.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.49d697ea.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index.72b3cb36.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index.a6ab0d54.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.d3c452e9.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/_layout.svelte.ff54b69b.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.fb7d771e.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.svelte.53f5fc93.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/Ripple.6b4d2b6a.js">
 		<link rel="modulepreload" href="./_app/immutable/entry/_layout.js.984db11e.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/_layout.da46b06b.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/stream-page.svelte.ef3fe3ae.js"><title>SoundBridgeFX</title><!-- HEAD_svelte-dlu9t3_START --><meta name="description" content="SoundBridgeFx"><!-- HEAD_svelte-dlu9t3_END -->
+		<link rel="modulepreload" href="./_app/immutable/entry/stream-page.svelte.365bdda1.js"><title>SoundBridgeFX</title><!-- HEAD_svelte-dlu9t3_START --><meta name="description" content="SoundBridgeFx"><!-- HEAD_svelte-dlu9t3_END -->
 	</head>
 	<body>
 		<div>
@@ -60,7 +60,7 @@
 </section>
 </div>
 </header>
-<div class="drawer-container svelte-16bycab"><aside class="mdc-drawer mdc-drawer--modal"><div class="mdc-drawer__content"><nav class="mdc-deprecated-list" role="list"><a class="mdc-deprecated-list-item mdc-deprecated-list-item--activated" style="" aria-current="page" tabindex="-1" href="http://localhost:5173/"><span class="mdc-deprecated-list-item__ripple"></span><span class="material-icons mdc-deprecated-list-item__graphic" aria-hidden="true">home</span>
+<div class="drawer-container svelte-16bycab"><aside class="mdc-drawer mdc-drawer--modal"><div class="mdc-drawer__content"><nav class="mdc-deprecated-list" role="list"><a class="mdc-deprecated-list-item mdc-deprecated-list-item--activated" style="" aria-current="page" tabindex="-1" href="http://localhost:6207/"><span class="mdc-deprecated-list-item__ripple"></span><span class="material-icons mdc-deprecated-list-item__graphic" aria-hidden="true">home</span>
                     <span class="mdc-deprecated-list-item__text">Home</span></a>
                 <a class="mdc-deprecated-list-item" style="" tabindex="-1" href="/ledfx"><span class="mdc-deprecated-list-item__ripple"></span><span class="material-icons mdc-deprecated-list-item__graphic" aria-hidden="true">wb_incandescent</span>
                     <span class="mdc-deprecated-list-item__text">LedFX</span></a>
@@ -71,26 +71,26 @@
 </aside></div>
 <main class=""><div class="container">
 
-<div><iframe src="http://localhost:8889/stream.mp3" height="0" width="0" title="stream iframe"></iframe></div></div>
+<div><iframe src="http://localhost:6207/stream_raw" height="0" width="0" title="stream iframe"></iframe></div></div>
 </main>
 
 
 			
 			<script>
 				{
-					__sveltekit_rrvymo = {
+					__sveltekit_yuo1te = {
 						env: {},
-						assets: new URL(".", location.href).pathname.replace(/^\/$/, ''),
+						base: new URL(".", location).pathname.slice(0, -1),
 						element: document.currentScript.parentElement
 					};
 
 					const data = [null,null];
 
 					Promise.all([
-						import("./_app/immutable/entry/start.9f11f0ca.js"),
-						import("./_app/immutable/entry/app.d3c452e9.js")
+						import("./_app/immutable/entry/start.49d697ea.js"),
+						import("./_app/immutable/entry/app.fb7d771e.js")
 					]).then(([kit, app]) => {
-						kit.start(app, __sveltekit_rrvymo.element, {
+						kit.start(app, __sveltekit_yuo1te.element, {
 							node_ids: [0, 5],
 							data,
 							form: null,

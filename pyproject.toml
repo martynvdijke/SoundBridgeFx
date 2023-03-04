@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "soundbridgefx"
-version = "0.2.0-beta"
+version = "0.2.1-beta"
 description = ""
 authors = ["Martyn van Dijke <martijnvdijke600@gmail.com>"]
 readme = "README.md"
@@ -8,7 +8,7 @@ license = "MIT"
 repository = "https://github.com/martynvdijke/SoundBridgeFx"
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = ">=3.8.1,<4.0"
 soco = "^0.28.1"
 flask = "^2.2.2"
 ledfx = "^2.0.60"
@@ -16,6 +16,7 @@ argparse = "^1.4.0"
 jsonpickle = "^3.0.1"
 flask-cors = "^3.0.10"
 soundcard = "^0.4.2"
+pyaudio = "^0.2.13"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.2.1"

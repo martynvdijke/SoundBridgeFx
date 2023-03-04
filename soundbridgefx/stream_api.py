@@ -1,10 +1,10 @@
 
 import json
 from flask import jsonify, request
-from soundbridgefx import cvlc, backend
+from soundbridgefx import ffmpeg, web_backend
 
-app = backend.app
-CVLC = cvlc.CLV()
+app = web_backend.app
+CVLC = ffmpeg.CLV()
 
 ##TODO refactor
 

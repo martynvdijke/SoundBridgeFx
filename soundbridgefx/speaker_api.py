@@ -1,9 +1,9 @@
 
 import json
 from flask import jsonify, request
-from soundbridgefx import speakers, backend
+from soundbridgefx import speakers, web_backend
 
-app = backend.app
+app = web_backend.app
 Speakers = speakers.Speakers()
 
 @app.route("/api/v1/speakers/all", methods=["GET"])

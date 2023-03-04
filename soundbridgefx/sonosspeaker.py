@@ -1,5 +1,5 @@
 import logging
-
+import os
 _LOGGER = logging.getLogger(__name__)
 
 
@@ -7,6 +7,7 @@ class SonosSpeaker:
 
     def __init__(self, speaker):
         self.speaker = speaker
+        self.stream_url = self.get_stream_url()
         self.player_name = self.speaker.player_name
         self.ip_addres = self.speaker.ip_address
         self.speaker_info = self.speaker.get_speaker_info()
@@ -16,6 +17,10 @@ class SonosSpeaker:
         self.current_media_info = self.speaker.get_current_media_info()
         _LOGGER.debug(self.player_name, self.ip_addres)
 
+    def get_stream_url(self):
+        url = str(os.getenv('STREAM_URL'))+"/stream_raw"
+        return url
+        
     def __str__(self):
         return str(self.player_name)
 
@@ -27,7 +32,7 @@ class SonosSpeaker:
 
     def play_stream(self):
         _LOGGER.debug("going to play stream")
-        self.speaker.play_uri(uri="http://192.168.1.21:8889/stream.mp3",
+        self.speaker.play_uri(uri=self.stream_url,
                               title="SoundBridgeFx stream",
                               force_radio=True)
 

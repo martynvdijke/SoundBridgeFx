@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, send_from_directory
+from flask import Flask, jsonify, request, send_from_directory, Response, stream_with_context
 from flask_cors import CORS
 import json
 from soundbridgefx import speakers
@@ -47,6 +47,15 @@ def set_volume():
     return jsonify(response)
 
 
+@app.route("/stream_raw")
+def stream():
+    def generate():
+        with open('stream.mp3', 'rb') as f:
+            data = f.read(1024)
+            while data:
+                yield data
+                data = f.read(1024)
+    return Response(stream_with_context(generate()), mimetype='audio/mpeg')
 
 """Main route for serving the web app
 
@@ -68,6 +77,6 @@ def home(path):
     return send_from_directory("web/client", path)
 
 def main():
-    # Run the app server on localhost:4449
+    # Run the app server on localhost:6207
     print(app.url_map)
-    app.run("localhost", 4449)
+    app.run(host='0.0.0.0',port=6207)

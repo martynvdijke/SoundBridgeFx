@@ -10,7 +10,7 @@
 
 
     onMount(async () => {
-        fetch("http://localhost:4449/api/v1/speakers/all")
+        fetch("http://localhost:6207/api/v1/speakers/all")
             .then(response => response.json())
             .then(data => {
                 console.log(data);

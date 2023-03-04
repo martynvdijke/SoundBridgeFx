@@ -18,11 +18,8 @@
 
 # Apply Black
 @black:
-  poetry run black .
+  poetry run black . -t martynvandijke/soundbridgefx:dev
 
-# Build docker file
-@docker_build:
-  docker build .
 
 #
 @poetry: poetry_build
@@ -32,7 +29,18 @@
 @poetry_build:
   poetry build
 
-@svelte_build:
+@web: web_build
+
+@web_update:
+  cd web && npm update
+
+@web_build: web_update
   cd web && npm run build
   cp -r web/.svelte-kit/output/client/ soundbridgefx/web
   cp -r web/.svelte-kit/output/prerendered soundbridgefx/web
+
+# Build docker file
+@docker_build:
+  docker build .
+
+@docker: docker_build

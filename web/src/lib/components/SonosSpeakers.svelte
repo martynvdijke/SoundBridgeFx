@@ -10,7 +10,7 @@
     let result = null
 
     async function getSpeakers() {
-        const res = await fetch('http://localhost:4449/api/v1/speakers/all')
+        const res = await fetch('http://localhost:6207/api/v1/speakers/all')
         const data = await res.json();
         if (res.ok) {
             speakers = data.all_speakers[0];
@@ -24,7 +24,7 @@
     let promise = getSpeakers();
 
     async function playStream() {
-        const res = await fetch('http://localhost:4449/api/v1/speakers/play/stream', {
+        const res = await fetch('http://localhost:6207/api/v1/speakers/play/stream', {
             method: 'POST',
             body: JSON.stringify({
                 selected: selected_speakers
@@ -36,7 +36,7 @@
     }
 
     async function playParty() {
-        const res = await fetch('http://localhost:4449/api/v1/speakers/play/party', {
+        const res = await fetch('http://localhost:6207/api/v1/speakers/play/party', {
             method: 'POST',
             body: JSON.stringify({
                 selected: selected_speakers

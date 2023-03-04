@@ -4,10 +4,10 @@ import time
 import argparse
 
 from soundbridgefx import (
-    backend,
+    ffmpeg,
     ledfx,
-    cvlc,
-    raspotify
+    raspotify,
+    web_backend
 )
 
 def setup_logging(loglevel):
@@ -48,21 +48,22 @@ def main():
     ledfx_thread.start()
 
 
-    # cvlc_thread = threading.Thread(
-    #     target=CVLC.main, args=(1,), daemon=True)
-    # cvlc_thread.start()
+    ffmpeg_thread = threading.Thread(
+        target=ffmpeg.main(), args=(1,), daemon=True)
+    ffmpeg_thread.start()
 
     # raspotify_thread = threading.Thread(
     #     target=raspotify.main(), args=(1,), daemon=True)
     # raspotify_thread.start()
 
-    backend_thread = threading.Thread(target=backend.main(), args=(1,))
+    backend_thread = threading.Thread(target=web_backend.main(), args=(1,))
     backend_thread.start()
 
     try:
         while True:
             time.sleep(2)
     except KeyboardInterrupt:
+        ffmpeg_thread.join()
         # ledfx_thread.join()
         # raspotify_thread.join()
         backend_thread.join()

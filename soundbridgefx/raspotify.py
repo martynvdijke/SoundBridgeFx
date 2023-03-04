@@ -4,16 +4,10 @@ import soundcard as sc
 
 _LOGGER = logging.getLogger(__name__)
 
-
-def get_audio_device():
-    default_speaker = sc.default_speaker()
-
-
 def main():
-    default_speaker = get_audio_device()
     try:
         p = subprocess.Popen(
-            "systemctl start raspotify",
+            "librespot",
             stdout=subprocess.PIPE,
             shell=True)
     except:
