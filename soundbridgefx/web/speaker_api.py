@@ -1,10 +1,12 @@
 
 import json
 from flask import jsonify, request
-from soundbridgefx import speakers, web_backend
+from soundbridgefx import web_backend
+from soundbridgefx.AbstractSpeaker import speaker
 
 app = web_backend.app
-Speakers = speakers.Speakers()
+Speakers = speaker.AbstractSpeaker()
+Speakers.add_sonos_controller()
 
 @app.route("/api/v1/speakers/all", methods=["GET"])
 def get_all_speakers():
@@ -14,14 +16,14 @@ def get_all_speakers():
 @app.route("/api/v1/speakers/play/stream", methods=["POST"])
 def play_stream():
     record = json.loads(request.data)
-    response = Speakers.play_stream(record["selected"])
+    response = Speakers.play(record["selected"])
     return jsonify(response)
 
 
 @app.route("/api/v1/speakers/play/stream", methods=["POST"])
 def play_party():
     record = json.loads(request.data)
-    response = Speakers.play_party(record["selected"])
+    response = Speakers.party_mode(record["selected"])
     return jsonify(response)
 
 

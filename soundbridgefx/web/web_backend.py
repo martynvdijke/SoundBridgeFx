@@ -1,11 +1,11 @@
 from flask import Flask, jsonify, request, send_from_directory, Response, stream_with_context
 from flask_cors import CORS
 import json
-from soundbridgefx import speakers
+from soundbridgefx.AbstractSpeaker import speaker
 
 app = Flask(__name__)
 CORS(app)
-Speakers = speakers.Speakers()
+Speakers = speaker.Speakers()
 
 @app.route("/api/v1/speakers/all", methods=["GET"])
 def get_all_speakers():
@@ -15,14 +15,14 @@ def get_all_speakers():
 @app.route("/api/v1/speakers/play/stream", methods=["POST"])
 def play_stream():
     record = json.loads(request.data)
-    response = Speakers.play_stream(record["selected"])
+    response = Speakers.play(record["selected"])
     return jsonify(response)
 
 
 @app.route("/api/v1/speakers/play/stream", methods=["POST"])
 def play_party():
     record = json.loads(request.data)
-    response = Speakers.play_party(record["selected"])
+    response = Speakers.party_mode(record["selected"])
     return jsonify(response)
 
 

@@ -1,6 +1,7 @@
 import soco
 import logging
-from soundbridgefx import (sonosspeaker)
+from soundbridgefx.AbstractSpeaker.speaker import AbstractSpeaker
+from soundbridgefx.Sonos.speaker import SonosSpeaker
 
 
 _LOGGER = logging.getLogger(__name__)
@@ -13,7 +14,7 @@ Please not the plural version of this, this class will scan for all sonos speake
 Returns:
 _type_: _description_
 """
-class SonosSpeakers:
+class SonosController(AbstractSpeaker):
 
     def __init__(self):
         self.sonos_speakers_dict = []
@@ -25,8 +26,8 @@ class SonosSpeakers:
     Populate the class with all sonos speakers on the network.
     """
     def populate(self):
-        speakers = soco.discover()
-        for speaker in speakers:
+        sonos_speakers = soco.discover()
+        for speaker in sonos_speakers:
             sonos_speaker = sonosspeaker.SonosSpeaker(speaker)
             my_dict = {
                 "player_name": sonos_speaker.player_name,
@@ -35,7 +36,7 @@ class SonosSpeakers:
             self.sonos_speakers_dict.append(my_dict)
             self.sonos_speakers.append(sonos_speaker)
 
-        self.N_speakers = self.sonos_speakers_dict.__len__
+        self.N_speakers = len(self.sonos_speakers_dict)
 
     @property
     def update(self):
@@ -68,10 +69,6 @@ class SonosSpeakers:
     def pause(self, sonos_speakers_stream):
         for i in self.get_speaker_index(sonos_speakers_stream):
             self.sonos_speakers[i].play()
-
-    def stop(self, sonos_speakers_stream):
-        for i in self.get_speaker_index(sonos_speakers_stream):
-            self.sonos_speakers[i].stop()
 
     def stop(self, sonos_speakers_stream):
         for i in self.get_speaker_index(sonos_speakers_stream):

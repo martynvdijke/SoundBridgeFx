@@ -1,8 +1,6 @@
 import json
 import logging
-from soundbridgefx import (
-    sonosspeakers
-)
+from soundbridgefx.Sonos.controller import 
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -19,12 +17,17 @@ class ComplexEncoder(json.JSONEncoder):
         Returns:
             _type_: _description_
         """
-class Speakers:
+
+
+class AbstractSpeaker:
     def __init__(self):
         self.speakers = []
+        self.add_sonos_controller()
+        self.populate()
+
+    def add_sonos_controller(self):
         self.sonos_speakers = sonosspeakers.SonosSpeakers()
         self.speakers.append(self.sonos_speakers)
-        self.populate()
 
     def populate(self):
         json.dumps(self.sonos_speakers.reprJSON(), cls=ComplexEncoder)
@@ -35,11 +38,11 @@ class Speakers:
     def get_all_speakers(self):
         return json.dumps(self.reprJSON(), cls=ComplexEncoder)
 
-    def play_stream(self, speakers):
+    def play(self, speakers):
         response = self.sonos_speakers.play_stream(speakers)
         return response
 
-    def play_party(self, speakers):
+    def party_mode(self, speakers):
         response = self.sonos_speakers.play_party(speakers)
         return response
 
