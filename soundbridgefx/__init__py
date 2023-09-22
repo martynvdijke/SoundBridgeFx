@@ -1,0 +1,11 @@
+"""soundbridgefx initilizer."""
+
+from soundbridgefx import (
+    main,
+    logging
+)
+
+
+__version__ = '0.1.0'
+logging = logging.logging
+

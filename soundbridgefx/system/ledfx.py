@@ -7,5 +7,5 @@ _LOGGER = logging.getLogger(__name__)
 def main():
     try:
         __main__.main()
-    except: 
+    except:
         _LOGGER.error("Could not start ledfx")
