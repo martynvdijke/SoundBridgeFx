@@ -1,0 +1,8 @@
+PyGObject
+requests
+psutil
+Flask
+netifaces
+pychromecast>=4.2
+PyQt5
+soco

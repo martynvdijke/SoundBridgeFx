@@ -1,7 +1,23 @@
-FROM debian:latest
+FROM x11docker/xfce
 
-RUN apt-get update && apt-get install -y ffmpeg python3 python3-pip python3-pyaudio python3-numpy libasound2-plugins
-RUN apt-get -y install curl && curl -sL https://dtcooper.github.io/raspotify/install.sh | sh
-RUN pip3 install --upgrade pip && pip3 install soundbridgefx
+RUN apt-get update && apt-get install -y \
+    avahi-daemon \
+    curl \
+    ffmpeg \
+    gcc \
+    libasound-dev \
+    libatlas3-base \
+    libavformat58 \
+    libportaudio2 \
+    mkchromecast \
+    portaudio19-dev \
+    pulseaudio \
+    python3 \
+    python3-aubio \
+    python3-pip \
+    python3-pyaudio \
+RUN pip install ledfx soco
 
-CMD /usr/bin/librespot && soundbridgefx
+
+
+# ENTRYPOINT [ "mkchromecast" ]
