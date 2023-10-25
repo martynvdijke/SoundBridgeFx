@@ -10,6 +10,8 @@ WORKDIR $HOME
 RUN apt-get update && apt-get install -y \
     avahi-daemon \
     curl \
+    chromium \
+    firefox-esr \
     ffmpeg \
     gcc \
     libasound-dev \
@@ -33,6 +35,3 @@ WORKDIR $HOME
 RUN mkdir -p $HOME && chown -R 1000:0 $HOME
 
 USER 1000
-
-
-# ENTRYPOINT [ "mkchromecast" ]
