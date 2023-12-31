@@ -1,9 +1,0 @@
-version: "3"
-
-services:
-  soundbridge:
-    image: test:latest
-    container_name: soundbridge
-    ports:
-     - "1400:1400"
-    tty: true
