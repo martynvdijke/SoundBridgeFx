@@ -9,6 +9,7 @@ WORKDIR $HOME
 
 RUN apt-get update && apt-get install -y \
     avahi-daemon \
+    cmake \
     curl \
     chromium \
     firefox-esr \
@@ -24,7 +25,7 @@ RUN apt-get update && apt-get install -y \
     python3 \
     python3-aubio \
     python3-pip \
-    python3-pyaudio 
+    python3-pyaudio
 RUN pip install ledfx soco
 
 RUN chown 1000:0 $HOME
