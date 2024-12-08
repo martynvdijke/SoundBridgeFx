@@ -1,4 +1,4 @@
-FROM kasmweb/core-debian-bullseye:1.14.0-rolling
+FROM kasmweb/core-debian-bullseye:1.16.1-rolling-daily
 
 USER root
 
