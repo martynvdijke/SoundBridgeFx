@@ -25,3 +25,22 @@ jobs:
       - name: Push Docker image
         run: docker push martynvandijke/soundbridgefx:latest
 
+      - name: Gotify Success Notification
+        if: success()
+        uses: eikendev/gotify-action@master
+        with:
+          gotify_api_base: ${{ secrets.GOTIFY_API_BASE }}
+          gotify_app_token: ${{ secrets.GOTIFY_APP_TOKEN }}
+          notification_title: 'Build Successful - SoundBridgeFx'
+          notification_message: 'Docker image built and pushed successfully.'
+
+      - name: Gotify Failure Notification
+        if: failure()
+        uses: eikendev/gotify-action@master
+        with:
+          gotify_api_base: ${{ secrets.GOTIFY_API_BASE }}
+          gotify_app_token: ${{ secrets.GOTIFY_APP_TOKEN }}
+          notification_title: 'Build Failed - SoundBridgeFx'
+          notification_message: 'The build workflow has failed. ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'
+          notification_priority: 5
+
