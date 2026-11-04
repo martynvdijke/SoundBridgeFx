@@ -1,0 +1,34 @@
+name: Stale Branches
+
+on:
+  schedule:
+    - cron: '0 6 * * 1-5'
+
+permissions:
+  issues: write
+  contents: write
+
+jobs:
+  stale_branches:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Stale Branches
+        uses: crs-k/stale-branches@138918e25f06d439bf76db5305a591d8a3c03678 # v10.0.0
+  otel:
+    permissions:
+      contents: read # Required. To access the private repository
+      actions: read # Required. To read workflow runs
+      pull-requests: read # Optional. To read PR labels
+      checks: read # Optional. To read run annotations
+    if: always()
+    name: OpenTelemetry Export Trace
+    runs-on: ubuntu-latest
+    needs: [stale_branches]
+    steps:
+      - name: Export workflow
+        continue-on-error: true
+        uses: corentinmusard/otel-cicd-action@4826b79d63662fa91657272e7711420cb6aea543 # v4.2.0
+        with:
+          otlpEndpoint: ${{ secrets.OTLP_ENDPOINT }}
+          otlpHeaders: ${{ secrets.OTLP_HEADERS }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
